@@ -1,4 +1,4 @@
-truct Fenwick{
+struct Fenwick{
     const int n;
     std::vector<T>tree;
     Fenwick(int n) : n(n+1), tree(n+1,0) {}
