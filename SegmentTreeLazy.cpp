@@ -1,7 +1,4 @@
-#include <bits/stdc++.h>
-#include <iostream>
 
-using namespace std;
 class Segtree{
 public:
 	vector<long long>tree,a,lazy;	
@@ -58,57 +55,8 @@ public:
 	}
 };
 
-
-int main(void){
-	ios_base::sync_with_stdio(false);
-	int n,q;
-	cin>>n;
-	vector<long long>a(n);
-	for(int i=0;i<n;i++)
-		cin>>a[i];
-	cin>>q;
-	Segtree seg(n,a);
-	seg.build(1,0,n-1);
-	while(q>0){
-		int c,x,y,v;
-		string str;
-        int tmp;
-
-        vector<int> cur;
-		getline(cin,str);
-
-        stringstream ss(str);
-        
-        while (ss >> tmp){
-            cur.push_back(tmp);
-        }
-        if(cur.size()==0){
-        	continue;
-        }
-		if(cur.size()==2){
-			x=cur[0];
-			y=cur[1];			
-			if(x>y)
-				cout<<min(seg.query(1,0,y,0,n-1),seg.query(1,x,n-1,0,n-1))<<'\n';
-			else
-				cout<<seg.query(1,x,y,0,n-1)<<'\n';
-		}
-		else{
-			x=cur[0];  
-			y=cur[1];
-			v=cur[2];
-			if(x>y){
-				seg.update(1,0,y,v,0,n-1);
-				seg.update(1,x,n-1,v,0,n-1);
-			}
-			else
-				seg.update(1,x,y,v,0,n-1);
-		}
-		--q;
-
-	}
-}
-
+//Query->seg.query(1,x,y,0,n-1)
+//Update->seg.update(1,x,y,0,n-1)
 
 
 
